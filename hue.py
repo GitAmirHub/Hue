@@ -11,3 +11,9 @@ uClient = uReq(my_url, context=ssl._create_unverified_context())
 page_html = uClient.read() #reads the page and stores it
 uClient.close() #closes the reader
 page_soup = soup(page_html, "html.parser") #creates a soup of the page in html
+
+#Modifies the input box to add the user for authentication
+user_tag = page_soup.input
+user_tag['value'] = '/api' + user
+
+txt_cmds = page_soup.textarea
